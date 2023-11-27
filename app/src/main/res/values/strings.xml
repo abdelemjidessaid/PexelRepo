@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pexel Repo</string>
+    <string name="splash_description"><![CDATA[Get free Videos & Images with high quality]]></string>
+    <string name="videos">Videos</string>
+    <string name="images">Images</string>
+    <string name="search">Search</string>
+    <string name="set_as_wallpaper">Set as wallpaper</string>
+    <string name="download">Download</string>
+    <string name="qualities">Download the image with different qualities :</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="large_2x">Large 2X</string>
+    <string name="origin">Origin</string>
+</resources>
