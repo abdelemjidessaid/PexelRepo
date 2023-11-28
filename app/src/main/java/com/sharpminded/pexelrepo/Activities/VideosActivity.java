@@ -46,6 +46,7 @@ public class VideosActivity extends AppCompatActivity {
     private TextView pageNumber;
     private TextInputEditText searchInput;
     private VideoResult lastResult = null;
+    private String lastQuery = "popular";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,16 @@ public class VideosActivity extends AppCompatActivity {
             return false;
         });
 
+        nextPage.setOnClickListener(view -> {
+            goToPage((int) lastResult.getPage() + 1);
+        });
+
+        previousPage.setOnClickListener(view -> {
+            int page = (int) lastResult.getPage();
+            if (page == 0) Toast.makeText(this, "This is the first page !", Toast.LENGTH_SHORT).show();
+            else goToPage(page - 1);
+        });
+
         search("");
     }
 
@@ -84,9 +95,51 @@ public class VideosActivity extends AppCompatActivity {
         String url;
         if (query.isEmpty()) url = baseUrl + "popular?per_page=50";
         else url = baseUrl + "search?query=" + query + "&per_page=50";
+        lastQuery = url;
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).addHeader("Authorization", apiKey).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                runOnUiThread(() ->
+                        Toast.makeText(VideosActivity.this, "Fetching videos failed: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String body = response.body().string();
+                    try {
+                        JSONObject json = new JSONObject(body);
+                        VideoParser parser = new VideoParser();
+                        VideoResult result = parser.videoResultParser(json);
+                        lastResult = result;
+                        // display the number of page
+                        if (lastResult != null) runOnUiThread(() -> {
+                            pageNumber.setText("" + lastResult.getPage());
+                            Toast.makeText(VideosActivity.this, "Result : " + result.getTotal_results(), Toast.LENGTH_SHORT).show();
+                        });
+                        // display the result of videos
+                        runOnUiThread(() -> display(result.getVideos()));
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+
+                } else {
+                    runOnUiThread(() -> Toast.makeText(VideosActivity.this, "Bad response !", Toast.LENGTH_SHORT).show());
+                }
+            }
+        });
+    }
+
+    private void goToPage(int pageNum) {
+        String base = lastQuery + "&page=" + pageNum;
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(base).addHeader("Authorization", apiKey).build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override

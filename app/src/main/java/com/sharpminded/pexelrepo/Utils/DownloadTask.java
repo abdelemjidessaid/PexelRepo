@@ -93,7 +93,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     }
 
     private void downloadFile(Context context, String url, String fileName) throws IOException {
-        File directory = new File(Environment.getExternalStorageDirectory(), "Download/Pexel_Repo");
+        File directory = new File(Environment.getExternalStorageDirectory(), "Download/PexelRepo");
         System.out.println(directory.getAbsolutePath());
         if (!directory.exists()) directory.mkdirs();
         File file = new File(directory, fileName);

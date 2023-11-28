@@ -46,7 +46,6 @@ public class ImagesActivity extends Activity {
     private RecyclerView recycler;
     private TextInputEditText searchInput;
     private TextView pageNumber;
-    private ImageButton nextPage, previousPage;
     private ImageResult lastResult = null;
 
     @Override
@@ -58,8 +57,8 @@ public class ImagesActivity extends Activity {
         recycler = findViewById(R.id.images_recycler);
         searchInput = findViewById(R.id.searchEditText);
         pageNumber = findViewById(R.id.page_number);
-        nextPage = findViewById(R.id.next_page);
-        previousPage = findViewById(R.id.previous_page);
+        ImageButton nextPage = findViewById(R.id.next_page);
+        ImageButton previousPage = findViewById(R.id.previous_page);
 
         nextPage.setOnClickListener(view -> {
             // go to the next page
