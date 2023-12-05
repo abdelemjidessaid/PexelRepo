@@ -1,21 +1,35 @@
-<h1 style="text-align: center">Pexel Repo</h1>
+<h1 align="center">Pexel Repo</h1>
 
 <br><br>
 
-### Android app to download free Wallpapers & Videos
+## About the application
+
+<div align="center">
+    <b>Our application developed with Java and Android Studio, Its role is to download free wallpapers and videos with high quality without `copy right`. It depends on fetching data from Pexels api with authorization and display it in nice UI.</b>
+</div>
 
 <br><br>
 
-### How it works
+## How it works
 
-This application depends on fetching data from www.pexels.com API.
-
-<br>
-
-![how it works](./repo_images/pexel_repo.drawio.png)
+#### The general idea
 
 <br>
 
-- It is written in Java, and sends the HTTP request and Getting response using OKHTTP3 dependency.
-- The data comes in JSON format.
-- I create Java parsers that converts JSON data into Java Objects that ease displaying the data into the GUI.
+![how it works](./repo_images/how_it_works.drawio.png)
+
+<br>
+
+#### Displaying the data process
+
+<br>
+
+![displaying data](./repo_images/fetching_displaying_data.drawio.png)
+
+<br>
+
+#### Downloading image or video
+
+<br>
+
+![download process](./repo_images/download_image_video.drawio.png)
