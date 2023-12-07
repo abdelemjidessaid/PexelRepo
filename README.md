@@ -30,9 +30,12 @@
 # Table of content
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [Infrastucture](#infrastructue)
 - [Screenshots](#screenshots)
-- [Author](#author)
+- [Contribution](#contribution)
+- [Related projects](#related-projects)
+- [Licensing](#licensing)
 
 <br><br><br>
 
@@ -41,6 +44,15 @@
 <b>Our application is published on Google Play Store you can get it from next link.</b>
 
 [PexelRepo](https://play.google.com/store/apps/details?id=com.sharpminded.pexelrepo)
+
+<br><br>
+
+## Usage
+
+<b>
+    You can download high quality wallpapers and videos for free if used for personal usage.<br>
+    This application just for Android Users.
+</b>
 
 <br><br>
 
@@ -86,8 +98,18 @@
 
 <br><br>
 
-## Author
+## Contribution
 
 <br>
 
 - [Abdelemjid Essaid](https://github.com/abdelemjidessaid) The creator of project completly.
+
+<br><br>
+
+## Related projects
+
+In this project we worked on API, which is related to the [Api](https://intranet.alxswe.com/projects/269) , [JavaScript - Web scraping](https://intranet.alxswe.com/projects/333) and [Api Advanced](https://intranet.alxswe.com/projects/314) Projects, depends on gattering data from the an api and display it to the user.
+
+## Licensing
+
+All rights reserved for the user [Abdelemjid Essaid](https://github.com/abdelemjidessaid) 2023.
